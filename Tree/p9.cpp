@@ -1,0 +1,36 @@
+//height of a binary tree.
+#include<iostream>
+#include<climits>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node *left,*right;
+    Node(int value){
+        data=value;
+        left=right=NULL;
+    }
+};
+
+int height(Node *root){
+    if(!root)
+    return 0;
+
+    return (1+max(height(root->left))+max(height(root->right)));
+}
+
+Node *BinaryTree(){
+    Node *root=new Node(1);
+    root->left=new Node(2);
+    root->right=new Node(3);
+    root->left->left=new Node(4);
+    root->right->left=new Node(5);
+    root->right->right=new Node(6);
+    return root;
+}
+
+int main(){
+    Node *root=BinaryTree();
+    cout<<"height of a binary tree:"<<height(root)<<endl;
+    return 0;
+}
